@@ -3,13 +3,19 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Models\Task;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $tasks = Task::where('completed', false)
+            ->orderBy('priority', 'desc')
+            ->orderBy('due_date')
+            ->get();
+
+        return view('tasks.index', compact('tasks'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

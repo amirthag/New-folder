@@ -4,11 +4,43 @@
 <head>
     <!-- Other meta tags and CSS links -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .primary-button-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #1F2937; /* Change color as needed */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 0.20rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 15px;
+    font-style: inherit;
+    text-align:right;
+    align-items:right;
+    
+}
+.lg{display:flex;
+    justify-content:flex-end;
+    margin:20px;}
+    </style>
 </head>
 
 <body>
     <!-- Your content here -->
     <br>
+    <div class="lg">         
+                <!-- Authentication -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <a class="primary-button-link " href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+</a>
+                </form>
+</div>
     <br>
     <div class="container text-center">
         <h1>Task Management System</h1>
